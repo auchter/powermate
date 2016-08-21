@@ -50,7 +50,7 @@ class PowermateDelegate(object):
         pass
 
     def on_counterclockwise(self):
-        """Called when the wheel is rotated counter-clockwise"""
+        """Called when the wheel is rotated counterclockwise"""
         pass
 
     def on_press_clockwise(self):
@@ -58,7 +58,7 @@ class PowermateDelegate(object):
         pass
 
     def on_press_counterclockwise(self):
-        """Called when the wheel is rotated counter-clockwise while pressed"""
+        """Called when the wheel is rotated counterclockwise while pressed"""
         pass
 
 
@@ -81,7 +81,7 @@ class Powermate(object):
                 if data == 104:
                     self.e.on_clockwise()
                 elif data == 103:
-                    self.e.on_counter_clockwise()
+                    self.e.on_counterclockwise()
                 elif data == 101:
                     self.e.on_press()
                 elif data == 112:

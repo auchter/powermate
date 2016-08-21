@@ -27,14 +27,14 @@ class PrintEvents(PowermateDelegate):
     def on_clockwise(self):
         print('Clockwise')
 
-    def on_counter_clockwise(self):
-        print('Counter-clockwise')
+    def on_counterclockwise(self):
+        print('Counterclockwise')
 
     def on_press_clockwise(self):
         print('Press clockwise')
 
     def on_press_counterclockwise(self):
-        print('Press counter-clockwise')
+        print('Press counterclockwise')
 
 
 def main():
