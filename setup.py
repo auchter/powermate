@@ -8,7 +8,7 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 
 setup(
     name='powermate',
-    version='0.0.1',
+    version='0.0.2',
     description='Library for Griffin Powermate Bluetooth controllers',
 	long_description=long_description,
     url='https://github.com/auchter/powermate',
