@@ -113,6 +113,15 @@ class Powermate(object):
         def connect(self):
             try:
                 self.p = btle.Peripheral(self.address, iface=self.iface)
+
+                #The PowerMate bluetooth sends a connection parameter update request after 5 seconds.
+                #Only after that has been done, can the led be turned off,
+                #The led can't be turned off if anything is written before this.
+                #Turning off the led saves battery life and prevents the auto disconnect after 5 minutes.
+                time.sleep(10)
+                val = (0).to_bytes(1, byteorder='little')
+                self.p.writeCharacteristic(LED_VAL_HND, val, False)
+
                 self.p.setDelegate(self.EventDispatcher(self.handler))
                 self._enable_notification(BATTERY_CC_HND)
                 self._enable_notification(KNOB_CC_HND)
