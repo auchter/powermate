@@ -127,8 +127,17 @@ class Powermate(object):
             while not self.kill:
                 while not self.connect():
                     time.sleep(1)
+                connect_time = time.monotonic()
+                led_on = True
                 while not self.kill:
                     try:
+                        #turn off the led to save battery power, but only after 2 seconds
+                        #otherwise the led won't turn off
+                        if led_on and (time.monotonic() - connect_time >= 2.0):
+                            print('Turning off LED');
+                            val = (0).to_bytes(1, byteorder='little')
+                            self.p.writeCharacteristic(LED_VAL_HND, val, True)
+                            led_on = False
                         if self.p.waitForNotifications(1.0):
                             continue
                     except btle.BTLEException as e:
